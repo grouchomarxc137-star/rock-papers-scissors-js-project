@@ -179,7 +179,7 @@ modal.style = `
 
 // Create the message
 let message = document.createElement("p");
-message.textContent = "Game Over! Want to restart?";
+message.textContent = `Game Over and ${gameWinner} won! Want to restart?`;
 message.style.marginBottom = "15px";
 message.style.color = "white";
 
