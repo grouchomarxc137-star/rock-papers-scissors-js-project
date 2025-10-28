@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #222831;
+}
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.header-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: #111720;
+    border : solid, 2px, red;
+}
+.header-div h1{
+    color: #fac54f;
+    font-size: 32px;
+    font-family: "Press Start 2P", cursive;
+}
+.body-div{
+    height: 550px;
+    border : solid, 2px, red;
+}
+.footer-div{
+    height: 84px;
+    border : solid, 2px, red;
+}

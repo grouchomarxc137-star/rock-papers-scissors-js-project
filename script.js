@@ -75,6 +75,7 @@ let playGame = () => {
             console.log("Undefined roundWinner input!");
     }
 }
+/*
 // main program
 // initializing human and computer scores
 let humanScore = 0;
@@ -106,3 +107,34 @@ else if (gameWinner=="draw"){
 else{
     console.log(`Mannaggia! you've lost the game with score : Player: ${humanScore} , Computer: ${computerScore}`);
 }
+*/
+// adding the buttons to the js logic
+/*
+const r = document.getElementById("rock");
+const p = document.getElementById("paper");
+const s = document.getElementById("scissors");
+
+// 
+let humanScore = 0, computerScore = 0;
+const playRnd = addEventListener("click", (e) => {
+
+    while (humanScore < 5 && computerScore <5)
+    {
+        // creating the scores div
+        const pc = document.getElementById("pc");
+        const scoresDiv = document.createElement("div");
+        scoresDiv.className = "scores-div";
+        scoresDiv.textContent = `Human Score: ${humanScore}\nComputer Score: ${computerScore}`;
+        pc.appendChild(scoresDiv);
+        let computerChoice = getComputerChoice();
+        let humanChoice = e.target.value;
+        let roundWinner = playRound(computerChoice, humanChoice);
+        const roundResultDiv = document.createElement("div");
+        roundResultDiv.className = "roundResultDiv";
+        roundResultDiv.textContent = `You've played ${humanChoice} and the computer played ${computerChoice}\n the Winner is ${roundWinner}`;
+        pc.appendChild(roundResultDiv);
+    }
+    
+    
+})
+    */
