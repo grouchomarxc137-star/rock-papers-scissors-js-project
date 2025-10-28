@@ -1,55 +1,5 @@
 "use strict";
-// computer choice between 0 and 0.3 : rock | between 0.3 and 0.7 : paper | else: scissors
-let getComputerChoice = () => {
-    let n = Math.random();
-    let computerChoice;
-    if ((n <= 0.3))
-    {
-        computerChoice = "rock";
-    }
-    else if (n >= 0.3 && n <= 0.7)
-    {
-        computerChoice = "paper"
-    }
-    else{
-        computerChoice = "scissors"
-    }
-    return computerChoice;
-}
-// human choice, p = papers, s = scissors, r = rock; assuming the human will always input valid input
-let getHumanChoice = (input) => {
-    let humanChoice;
-    switch(input){
-        case "p":
-            humanChoice = "paper";
-            break;
-        case "r":
-            humanChoice = "rock";
-            break;
-        case "s":
-            humanChoice = "scissors";
-            break;
-        default:
-            humanChoice = "N/A";
-    }
-    return humanChoice;
-}
-// Playing a round, determining the winner and returning it
-let playRound = (cc, hc) => {
-    let roundWinner;
-    if (hc == "rock" && cc == "scissors" || hc == "paper" && cc == "rock" || hc == "scissors" && cc == "paper"){
-        roundWinner = "human";
-    }
-    else if (hc === cc)
-    {
-        roundWinner = "draw";
-    }
-    else{
-        roundWinner = "computer"
-    }
-    return roundWinner;
 
-}
 // playing an entire game 
 let playGame = () => {
     let p = prompt("Type 's' for scissors, 'r' for rock, 'p' for paper: ");
@@ -75,66 +25,101 @@ let playGame = () => {
             console.log("Undefined roundWinner input!");
     }
 }
-/*
-// main program
-// initializing human and computer scores
-let humanScore = 0;
+
+// declaring variables
 let computerScore = 0;
-// initializing round counter
-let roundCounter = 0;
-// initialzing a loop to play until 5 rounds are played
-while(roundCounter<5){
-    playGame();
-    roundCounter++;
-}
-let gameWinner
-if (humanScore > computerScore){
-    gameWinner = "human"
-}
-else if(humanScore == computerScore)
-    {
-        gameWinner = "draw"
-    }
-else{
-    gameWinner = "computer"
-} 
-if (gameWinner == "human"){
-    console.log(`Congratz! you've won the game with score : Player: ${humanScore} , Computer: ${computerScore}`);
-}
-else if (gameWinner=="draw"){
-    console.log(`you've drawed the game with score : Player: ${humanScore} , Computer: ${computerScore}`);
-}
-else{
-    console.log(`Mannaggia! you've lost the game with score : Player: ${humanScore} , Computer: ${computerScore}`);
-}
-*/
-// adding the buttons to the js logic
-/*
-const r = document.getElementById("rock");
-const p = document.getElementById("paper");
-const s = document.getElementById("scissors");
+let humanScore = 0;
+let roundWinner = "";
 
-// 
-let humanScore = 0, computerScore = 0;
-const playRnd = addEventListener("click", (e) => {
-
-    while (humanScore < 5 && computerScore <5)
-    {
-        // creating the scores div
-        const pc = document.getElementById("pc");
-        const scoresDiv = document.createElement("div");
-        scoresDiv.className = "scores-div";
-        scoresDiv.textContent = `Human Score: ${humanScore}\nComputer Score: ${computerScore}`;
-        pc.appendChild(scoresDiv);
-        let computerChoice = getComputerChoice();
-        let humanChoice = e.target.value;
-        let roundWinner = playRound(computerChoice, humanChoice);
-        const roundResultDiv = document.createElement("div");
-        roundResultDiv.className = "roundResultDiv";
-        roundResultDiv.textContent = `You've played ${humanChoice} and the computer played ${computerChoice}\n the Winner is ${roundWinner}`;
-        pc.appendChild(roundResultDiv);
+// function for playing a round
+let playRound = (hc, cc) => {
+    if (hc == "rock" && cc == "scissors" || hc == "paper" && cc == "rock" || hc == "scissors" && cc == "paper"){
+        roundWinner = "human";
+        humanScore++;
     }
-    
-    
-})
-    */
+    else if (hc === cc)
+    {
+        roundWinner = "draw";
+    }
+    else{
+        roundWinner = "computer"
+        computerScore++;
+    }
+    updateScoreMessage(hc, cc, roundWinner);
+}
+// function for generating the computer choice
+let getComputerChoice = () => {
+    let n = Math.random();
+    let computerChoice;
+    if ((n <= 0.3))
+    {
+        computerChoice = "rock";
+    }
+    else if (n >= 0.3 && n <= 0.7)
+    {
+        computerChoice = "paper"
+    }
+    else{
+        computerChoice = "scissors"
+    }
+    return computerChoice;
+}
+// getting the ui elements by id
+const scoreInfo = document.getElementById("scoreInfo");
+const scoreMessage = document.getElementById("scoreMessage");
+const playerSign = document.getElementById("playerSign");
+const computerSign = document.getElementById("computerSign");
+const humanScoreP = document.getElementById("humanScore");
+const computerScoreP = document.getElementById("computerScore");
+// updating the score function
+function updateScore() {
+  if (roundWinner === 'draw') {
+    scoreInfo.textContent = "It's a tie!"
+  } else if (roundWinner === 'human') {
+    scoreInfo.textContent = 'You won!'
+  } else if (roundWinner === 'computer') {
+    scoreInfo.textContent = 'You lost!'
+  }
+
+  playerScoreP.textContent = `Player: ${playerScore}`
+  computerScoreP.textContent = `Computer: ${computerScore}`
+}
+// updating the score message
+function updateScoreMessage(hc, cc, roundWinner) {
+  if (roundWinner === 'player') {
+    scoreMessage.textContent = `${capitalizeFirstLetter(
+      hc
+    )} beats ${cc.toLowerCase()}`
+    return
+  }
+  if (roundWinner === 'computer') {
+    scoreMessage.textContent = `${capitalizeFirstLetter(
+      hc
+    )} is beaten by ${cc.toLowerCase()}`
+    return
+  }
+
+  scoreMessage.textContent = `${capitalizeFirstLetter(
+    hc
+  )} ties with ${cc.toLowerCase()}`
+}
+rockBtn.addEventListener('click', () => handleClick('ROCK'))
+paperBtn.addEventListener('click', () => handleClick('PAPER'))
+scissorsBtn.addEventListener('click', () => handleClick('SCISSORS'))
+
+function handleClick(playerSelection) {
+  if (isGameOver()) {
+    openEndgameModal()
+    return
+  }
+
+  const computerSelection = getRandomChoice()
+  playRound(playerSelection, computerSelection)
+  updateChoices(playerSelection, computerSelection)
+  updateScore()
+
+  if (isGameOver()) {
+    openEndgameModal()
+    setFinalMessage()
+  }
+}

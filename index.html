@@ -15,27 +15,27 @@
         </div>
         <div class="body-div">
             <div class="body-div-1">
-                <h2 class="div1-part1">Choose your weapon</h2>
-                <h3 class="div1-part2">First to score 5 points wins the game</h3>
+                <h2 class="div1-part1" id="scoreInfo">Choose your weapon</h2>
+                <h3 class="div1-part2" id="scoreMessage">First to score 5 points wins the game</h3>
             </div>
             <div class="body-div-2">
                 <div class="player-choice">
-                    <div class="sign">?</div>
-                    <p class="score">Player: 0</p>
+                    <div class="sign" id="playerSign">?</div>
+                    <p class="score" id="humanScore">Player: 0</p>
                 </div>
                 <div class="computer-choice">
-                    <div class="sign">?</div>
-                    <p class="score">Computer: 0</p>
+                    <div class="sign" id="computerSign">?</div>
+                    <p class="score" id="computerScore">Computer: 0</p>
                 </div>
             </div>
             <div class="body-div-3">
-                <button class="btn" value="rock">
+                <button class="btn" id="rockBtn" value="rock">
                     <div class="sign">✊</div>
                 </button>
-                <button class="btn" value="paper">
+                <button class="btn" id="paperBtn" value="paper">
                     <div class="sign">✋</div>
                 </button>
-                <button class="btn" value="scissors">
+                <button class="btn" id="scissorsBtn" value="scissors">
                     <div class="sign">✌</div>
                 </button>
             </div>
@@ -44,6 +44,6 @@
             <p>The Odin Project 2025</p>
             <a href="https://github.com/grouchomarxc137-star"><img class="github-logo" src="github-mark.svg"></a>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>
-<script src="script.js"></script>
