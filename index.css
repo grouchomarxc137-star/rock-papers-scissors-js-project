@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #222831;
+    font-family: "Roboto", sans-serif;
 }
 .press-start-2p-regular {
   font-family: "Press Start 2P", system-ui;
@@ -13,9 +14,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
+    height: 120px;
     background-color: #111720;
-    border : solid, 2px, red;
 }
 .header-div h1{
     color: #fac54f;
@@ -24,9 +24,86 @@ body{
 }
 .body-div{
     height: 550px;
-    border : solid, 2px, red;
 }
 .footer-div{
     height: 84px;
-    border : solid, 2px, red;
+}
+.body-div-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.div1-part1{
+    font-size: 32px;
+    color: white;
+    margin-bottom: 0px;
+}
+.div1-part2{
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+}
+.body-div-2{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.sign{
+    color: white;
+    font-size: 80px;
+}
+.score{
+    color: white;
+    font-size: 22px;
+}
+.player-choice{
+    margin-left: 580px;
+    text-align: center;
+    font-weight: bold;
+}
+.computer-choice{
+    text-align: center;
+    margin-left: 100px;
+    font-weight: bold;
+}
+.btn{
+    background-color: #393e46;
+    font-size: 16px;
+    width: 160px;
+    height: 160px;
+    border: none;
+    border-radius: 10px;
+}
+.body-div-3{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color: #5b5f68;
+}
+.github-logo{
+    display: block;
+    max-width: 28px;
+    max-height: 28px;
+    color: var(--primary-light);
+    transition: transform 0.3s ease-in-out;
+    margin-left: 10px;
+}
+.github-logo:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+.footer-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-div p{
+    color: white;
+    font-size: 20px;
 }
